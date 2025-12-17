@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/context/LanguageContext";
+import { supabase } from "@/integrations/supabase/client"; // Import the supabase client
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -24,11 +25,29 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast.success(t("contact.form.success"));
-    setFormData({ name: "", email: "", organization: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      // Connects the form to your Supabase table (replace 'contacts' with your actual table name)
+      const { error } = await supabase
+        .from('contacts') 
+        .insert([
+          { 
+            name: formData.name, 
+            email: formData.email, 
+            organization: formData.organization, 
+            message: formData.message 
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast.success(t("contact.form.success"));
+      setFormData({ name: "", email: "", organization: "", message: "" });
+    } catch (error: any) {
+      console.error("Supabase error:", error);
+      toast.error(error.message || "An error occurred while sending your message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
