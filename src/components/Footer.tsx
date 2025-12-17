@@ -1,40 +1,44 @@
 const Footer = () => {
   return (
-    <footer className="bg-primary py-12">
+    <footer className="bg-primary py-16">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="grid md:grid-cols-2 gap-10 mb-12">
           <div>
-            <span className="font-display text-xl font-bold text-primary-foreground">
-              Padel Catalyst
+            <span className="text-lg font-semibold text-primary-foreground tracking-tight">
+              PADEL CATALYST
             </span>
-            <p className="text-primary-foreground/60 text-sm mt-1">
-              Soluciones integrales de pádel
+            <p className="text-primary-foreground/60 mt-3 max-w-sm leading-relaxed">
+              Turning spaces into active communities.
             </p>
           </div>
 
-          <div className="flex items-center gap-6 text-primary-foreground/60 text-sm">
-            <a href="#liderazgo" className="hover:text-primary-foreground transition-colors">
-              Liderazgo
-            </a>
-            <a href="#metodologia" className="hover:text-primary-foreground transition-colors">
-              Metodología
-            </a>
-            <a href="#colegios" className="hover:text-primary-foreground transition-colors">
-              Colegios
-            </a>
-            <a href="#contacto" className="hover:text-primary-foreground transition-colors">
-              Contacto
-            </a>
+          <div className="flex flex-col md:items-end gap-6">
+            <div className="flex flex-wrap gap-8 text-sm">
+              <a href="#services" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                Services
+              </a>
+              <a href="#methodology" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                Methodology
+              </a>
+              <a href="#partners" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                Partners
+              </a>
+              <a href="#contact" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                Contact
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/50 text-sm">
-            © {new Date().getFullYear()} Padel Catalyst. Todos los derechos reservados.
+        <div className="pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-primary-foreground/40 text-sm">
+            © {new Date().getFullYear()} Padel Catalyst. All rights reserved.
           </p>
-          <p className="text-primary-foreground/50 text-sm">
-            Madrid, España · anton@padelcatalyst.com
-          </p>
+          <div className="text-primary-foreground/40 text-sm">
+            <span>info@padelcatalyst.com</span>
+            <span className="mx-3">·</span>
+            <span>Plaza Marqués de Salamanca 9, 28006 Madrid</span>
+          </div>
         </div>
       </div>
     </footer>
