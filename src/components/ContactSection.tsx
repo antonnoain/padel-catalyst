@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/context/LanguageContext";
-// Import the supabase client from your integration folder
+// Import the supabase client
 import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
@@ -27,7 +27,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Insert the form data into your Supabase table named 'contacts'
+      // Use 'contacts' as the table name
       const { error } = await supabase
         .from('contacts') 
         .insert([
@@ -42,7 +42,7 @@ const ContactSection = () => {
       if (error) throw error;
 
       toast.success(t("contact.form.success"));
-      // Clear the form after successful submission
+      // Clear form on success
       setFormData({ name: "", email: "", organization: "", message: "" });
     } catch (error: any) {
       console.error("Error submitting form:", error.message);
