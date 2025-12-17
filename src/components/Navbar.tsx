@@ -17,7 +17,6 @@ const Navbar = () => {
   const navLinks = [
     { href: "#services", label: "Services" },
     { href: "#methodology", label: "Methodology" },
-    { href: "#partners", label: "Partners" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -54,9 +53,8 @@ const Navbar = () => {
             </a>
           ))}
           <Button
-            variant={isScrolled ? "default" : "outline"}
             size="sm"
-            className={isScrolled ? "" : "border-white/30 text-white hover:bg-white/10 hover:text-white"}
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
             Request Feasibility Study
