@@ -47,7 +47,7 @@ const HeroSection = () => {
           <div className="mt-16 animate-fade-in-delay-3">
             <div className="inline-flex items-center gap-3 text-white/60 border border-white/20 rounded-full px-5 py-2.5 bg-white/5 backdrop-blur-sm">
               <Globe className="w-4 h-4" />
-              <span className="text-sm font-medium">International Operational Experience · 12+ Clubs Managed</span>
+              <span className="text-sm font-medium">International Operational Experience</span>
             </div>
           </div>
         </div>

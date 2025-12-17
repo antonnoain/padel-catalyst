@@ -35,15 +35,11 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left - Contact Info */}
           <div>
-            <p className="text-accent text-sm font-medium uppercase tracking-[0.15em] mb-4">
-              Contact
-            </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
               Let's Discuss Your Project
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-              Have an underutilized space or an existing facility that needs optimization? 
-              Our team is ready to analyze your potential.
+              Ready to elevate your institution's sports offering or develop a high-yield padel asset? Let's discuss your project's potential.
             </p>
 
             <div className="space-y-6">
