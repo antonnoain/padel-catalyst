@@ -1,4 +1,8 @@
+import { useLanguage } from "@/context/LanguageContext";
+
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-primary py-16">
       <div className="container mx-auto px-6">
@@ -8,20 +12,20 @@ const Footer = () => {
               PADEL CATALYST
             </span>
             <p className="text-primary-foreground/60 mt-3 max-w-sm leading-relaxed">
-              Turning spaces into active communities.
+              {t("footer.tagline")}
             </p>
           </div>
 
           <div className="flex flex-col md:items-end gap-6">
             <div className="flex flex-wrap gap-8 text-sm">
               <a href="#services" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                Services
+                {t("nav.services")}
               </a>
               <a href="#methodology" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                Methodology
+                {t("nav.methodology")}
               </a>
               <a href="#contact" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                Contact
+                {t("nav.contact")}
               </a>
             </div>
           </div>
@@ -29,7 +33,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <p className="text-primary-foreground/40 text-sm">
-            © {new Date().getFullYear()} Padel Catalyst. All rights reserved.
+            © {new Date().getFullYear()} Padel Catalyst. {t("footer.copyright")}
           </p>
           <div className="text-primary-foreground/40 text-sm">
             <span>info@padelcatalyst.com</span>

@@ -1,21 +1,24 @@
 import { Cpu, ChartPie, Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const FirmSection = () => {
+  const { t } = useLanguage();
+
   const pillars = [
     {
       icon: Cpu,
-      title: "Infrastructure Excellence",
-      description: "State-of-the-art facility design and rigorous construction management. We ensure superior architectural quality and durability to create premium player experiences.",
+      titleKey: "firm.pillar1.title",
+      descriptionKey: "firm.pillar1.description",
     },
     {
       icon: ChartPie,
-      title: "Financial Strength",
-      description: "Solid investment backing to guarantee project viability and long-term growth. Our financial structure ensures every project reaches completion.",
+      titleKey: "firm.pillar2.title",
+      descriptionKey: "firm.pillar2.description",
     },
     {
       icon: Globe,
-      title: "Global Operations",
-      description: "International management capability with standardized quality protocols adapted to local markets. Proven experience across Europe and Asia.",
+      titleKey: "firm.pillar3.title",
+      descriptionKey: "firm.pillar3.description",
     },
   ];
 
@@ -25,10 +28,10 @@ const FirmSection = () => {
         {/* Header */}
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
-            Why Partner With Us
+            {t("firm.title")}
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            We integrate premium infrastructure development with strategic investment to deliver world-class padel assets.
+            {t("firm.subtitle")}
           </p>
         </div>
 
@@ -43,10 +46,10 @@ const FirmSection = () => {
                 <pillar.icon className="w-6 h-6 text-accent" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                {pillar.title}
+                {t(pillar.titleKey)}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {pillar.description}
+                {t(pillar.descriptionKey)}
               </p>
             </div>
           ))}

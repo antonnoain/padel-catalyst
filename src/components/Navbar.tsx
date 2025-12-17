@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,9 +18,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#methodology", label: "Methodology" },
-    { href: "#contact", label: "Contact" },
+    { href: "#services", labelKey: "nav.services" },
+    { href: "#methodology", labelKey: "nav.methodology" },
+    { href: "#contact", labelKey: "nav.contact" },
   ];
 
   return (
@@ -49,15 +52,16 @@ const Navbar = () => {
                 isScrolled ? "text-muted-foreground" : "text-white/80 hover:text-white"
               }`}
             >
-              {link.label}
+              {t(link.labelKey)}
             </a>
           ))}
+          <LanguageSwitcher isScrolled={isScrolled} />
           <Button
             size="sm"
             className="bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Request Feasibility Study
+            {t("nav.cta")}
           </Button>
         </div>
 
@@ -86,11 +90,22 @@ const Navbar = () => {
                 className="text-foreground hover:text-accent transition-colors py-2 text-sm"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.label}
+                {t(link.labelKey)}
               </a>
             ))}
-            <Button variant="default" size="sm" className="w-full mt-4">
-              Request Feasibility Study
+            <div className="py-2">
+              <LanguageSwitcher isScrolled={true} />
+            </div>
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="w-full mt-4"
+              onClick={() => {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              {t("nav.cta")}
             </Button>
           </div>
         </div>
