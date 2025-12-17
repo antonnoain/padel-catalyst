@@ -20,9 +20,6 @@ const Footer = () => {
               <a href="#methodology" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 Methodology
               </a>
-              <a href="#partners" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                Partners
-              </a>
               <a href="#contact" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 Contact
               </a>

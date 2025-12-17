@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Globe, Building2 } from "lucide-react";
+import { Globe } from "lucide-react";
 import heroPadel from "@/assets/hero-padel.jpg";
 
 const HeroSection = () => {
@@ -15,7 +15,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-hero" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
+      <div className="relative z-10 container mx-auto px-6 pt-32">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 animate-fade-in-up leading-[1.1] tracking-tight">
             Global Padel Solutions: Investment, Development & Management.
@@ -28,7 +28,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay-2">
             <Button 
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Request Feasibility Study
@@ -36,33 +36,18 @@ const HeroSection = () => {
             <Button 
               variant="outline"
               size="lg"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="border-2 border-white/50 bg-transparent text-white hover:bg-white/10 hover:border-white"
               onClick={() => document.getElementById("methodology")?.scrollIntoView({ behavior: "smooth" })}
             >
               Our Methodology
             </Button>
           </div>
-        </div>
 
-        {/* Trust Badge */}
-        <div className="mt-20 animate-fade-in-delay-3">
-          <p className="text-white/50 text-xs mb-5 uppercase tracking-[0.2em] font-medium">
-            International Operational Experience
-          </p>
-          <div className="flex flex-wrap items-center gap-8">
-            <div className="flex items-center gap-2.5 text-white/40">
-              <Globe className="w-5 h-5" />
-              <span className="text-sm font-medium">Europe</span>
-            </div>
-            <div className="w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2.5 text-white/40">
-              <Globe className="w-5 h-5" />
-              <span className="text-sm font-medium">Asia</span>
-            </div>
-            <div className="w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2.5 text-white/40">
-              <Building2 className="w-5 h-5" />
-              <span className="text-sm font-medium">12+ Clubs Managed</span>
+          {/* Trust Badge - Simplified */}
+          <div className="mt-16 animate-fade-in-delay-3">
+            <div className="inline-flex items-center gap-3 text-white/60 border border-white/20 rounded-full px-5 py-2.5 bg-white/5 backdrop-blur-sm">
+              <Globe className="w-4 h-4" />
+              <span className="text-sm font-medium">International Operational Experience · 12+ Clubs Managed</span>
             </div>
           </div>
         </div>
