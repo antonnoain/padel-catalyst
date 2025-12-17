@@ -106,7 +106,7 @@ export const translations = {
     "hero.badge": "Experiencia Operativa Internacional",
 
     // Firm Section
-    "firm.title": "Por Qué Asociarse Con Nosotros",
+    "firm.title": "¿Por Qué Asociarse Con Nosotros?",
     "firm.subtitle": "Integramos desarrollo de infraestructuras premium con inversión estratégica para ofrecer activos de pádel de primer nivel.",
     "firm.pillar1.title": "Excelencia en Infraestructuras",
     "firm.pillar1.description": "Diseño de instalaciones de última generación y gestión rigurosa de la construcción. Garantizamos una calidad arquitectónica superior y durabilidad para crear experiencias premium.",
@@ -116,7 +116,7 @@ export const translations = {
     "firm.pillar3.description": "Capacidad de gestión internacional con protocolos de calidad estandarizados adaptados a mercados locales. Experiencia demostrada en Europa y Asia.",
 
     // Services Section
-    "services.title": "A Quién Ayudamos",
+    "services.title": "¿A Quién Ayudamos?",
     "services.subtitle": "Soluciones personalizadas para instituciones, propietarios y operadores de clubes que buscan maximizar el potencial de su infraestructura deportiva.",
     "services.edu.title": "Instituciones Educativas",
     "services.edu.description": "Financiamos y gestionamos instalaciones deportivas, proporcionando a los centros educativos equipamientos premium sin riesgo operativo.",

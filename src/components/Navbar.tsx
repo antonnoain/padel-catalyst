@@ -55,7 +55,6 @@ const Navbar = () => {
               {t(link.labelKey)}
             </a>
           ))}
-          <LanguageSwitcher isScrolled={isScrolled} />
           <Button
             size="sm"
             className="bg-primary text-primary-foreground hover:bg-primary/90"
@@ -63,6 +62,7 @@ const Navbar = () => {
           >
             {t("nav.cta")}
           </Button>
+          <LanguageSwitcher isScrolled={isScrolled} />
         </div>
 
         {/* Mobile Menu Button */}
