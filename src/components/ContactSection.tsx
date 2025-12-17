@@ -27,10 +27,9 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Insert the form data into your Supabase table
-      // Note: Ensure your table name matches 'contact_submissions' and has these column names
+      // Insert the form data into your Supabase table named 'contacts'
       const { error } = await supabase
-        .from('contact_submissions') 
+        .from('contacts') 
         .insert([
           {
             name: formData.name,
