@@ -1,38 +1,41 @@
 import { GraduationCap, Building, Users } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: GraduationCap,
-      title: "Educational Institutions",
-      description: "We finance and manage sports facilities, providing schools with premium amenities at zero operational risk.",
-      features: [
-        "Full investment coverage",
-        "Free access during school hours",
-        "Professional management",
-        "Academy programs for students",
+      titleKey: "services.edu.title",
+      descriptionKey: "services.edu.description",
+      featureKeys: [
+        "services.edu.feature1",
+        "services.edu.feature2",
+        "services.edu.feature3",
+        "services.edu.feature4",
       ],
     },
     {
       icon: Building,
-      title: "Landowners & Developers",
-      description: "We transform underutilized land into high-yield sports assets through comprehensive development plans.",
-      features: [
-        "Feasibility analysis",
-        "Investment partnership",
-        "Turnkey construction",
-        "Long-term management",
+      titleKey: "services.land.title",
+      descriptionKey: "services.land.description",
+      featureKeys: [
+        "services.land.feature1",
+        "services.land.feature2",
+        "services.land.feature3",
+        "services.land.feature4",
       ],
     },
     {
       icon: Users,
-      title: "Club Owners",
-      description: "Optimization of existing clubs to maximize profitability through professional management and technology.",
-      features: [
-        "Operational audit",
-        "Technology integration",
-        "Revenue optimization",
-        "Staff training programs",
+      titleKey: "services.club.title",
+      descriptionKey: "services.club.description",
+      featureKeys: [
+        "services.club.feature1",
+        "services.club.feature2",
+        "services.club.feature3",
+        "services.club.feature4",
       ],
     },
   ];
@@ -43,10 +46,10 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
-            Who We Help
+            {t("services.title")}
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Tailored solutions for institutions, landowners, and club operators seeking to maximize their sports infrastructure potential.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -62,17 +65,17 @@ const ServicesSection = () => {
               </div>
               
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                {service.description}
+                {t(service.descriptionKey)}
               </p>
               
               <ul className="space-y-3">
-                {service.features.map((feature, idx) => (
+                {service.featureKeys.map((featureKey, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-sm text-muted-foreground">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                    {feature}
+                    {t(featureKey)}
                   </li>
                 ))}
               </ul>

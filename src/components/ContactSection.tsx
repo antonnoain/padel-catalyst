@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,7 +26,7 @@ const ContactSection = () => {
     
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
-    toast.success("Message sent successfully. We'll be in touch shortly.");
+    toast.success(t("contact.form.success"));
     setFormData({ name: "", email: "", organization: "", message: "" });
     setIsSubmitting(false);
   };
@@ -36,10 +38,10 @@ const ContactSection = () => {
           {/* Left - Contact Info */}
           <div>
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
-              Let's Discuss Your Project
+              {t("contact.title")}
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-              Ready to elevate your institution's sports offering or develop a high-yield padel asset? Let's discuss your project's potential.
+              {t("contact.subtitle")}
             </p>
 
             <div className="space-y-6">
@@ -48,7 +50,7 @@ const ContactSection = () => {
                   <Mail className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">Email</p>
+                  <p className="text-sm text-muted-foreground mb-1">{t("contact.email.label")}</p>
                   <a
                     href="mailto:info@padelcatalyst.com"
                     className="text-foreground font-medium hover:text-accent transition-colors"
@@ -63,7 +65,7 @@ const ContactSection = () => {
                   <MapPin className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">Address</p>
+                  <p className="text-sm text-muted-foreground mb-1">{t("contact.address.label")}</p>
                   <p className="text-foreground font-medium">
                     Plaza Marqués de Salamanca 9<br />
                     28006, Madrid
@@ -76,14 +78,14 @@ const ContactSection = () => {
           {/* Right - Contact Form */}
           <div className="bg-background rounded-lg border border-border p-8">
             <h3 className="text-xl font-semibold text-foreground mb-6">
-              Send us a message
+              {t("contact.form.title")}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Full name *
+                    {t("contact.form.name")}
                   </label>
                   <Input
                     id="name"
@@ -92,14 +94,14 @@ const ContactSection = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your name"
+                    placeholder={t("contact.form.name.placeholder")}
                     className="h-11"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email *
+                    {t("contact.form.email")}
                   </label>
                   <Input
                     id="email"
@@ -108,7 +110,7 @@ const ContactSection = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="your@email.com"
+                    placeholder={t("contact.form.email.placeholder")}
                     className="h-11"
                   />
                 </div>
@@ -116,7 +118,7 @@ const ContactSection = () => {
 
               <div>
                 <label htmlFor="organization" className="block text-sm font-medium text-foreground mb-2">
-                  Organization
+                  {t("contact.form.organization")}
                 </label>
                 <Input
                   id="organization"
@@ -124,14 +126,14 @@ const ContactSection = () => {
                   type="text"
                   value={formData.organization}
                   onChange={handleChange}
-                  placeholder="Company or institution name"
+                  placeholder={t("contact.form.organization.placeholder")}
                   className="h-11"
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Message *
+                  {t("contact.form.message")}
                 </label>
                 <Textarea
                   id="message"
@@ -139,7 +141,7 @@ const ContactSection = () => {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project..."
+                  placeholder={t("contact.form.message.placeholder")}
                   className="min-h-[120px] resize-none"
                 />
               </div>
@@ -151,11 +153,11 @@ const ContactSection = () => {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  "Sending..."
+                  t("contact.form.submitting")
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {t("contact.form.submit")}
                   </>
                 )}
               </Button>

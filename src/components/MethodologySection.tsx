@@ -1,30 +1,33 @@
 import { Search, Ruler, Cpu, Users } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const MethodologySection = () => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       icon: Search,
       number: "01",
-      title: "Strategy & Feasibility",
-      description: "Market analysis, demand assessment, and comprehensive business planning to ensure project viability.",
+      titleKey: "methodology.step1.title",
+      descriptionKey: "methodology.step1.description",
     },
     {
       icon: Ruler,
       number: "02",
-      title: "Design & Permits",
-      description: "Architecture design, licensing management, and construction oversight through to completion.",
+      titleKey: "methodology.step2.title",
+      descriptionKey: "methodology.step2.description",
     },
     {
       icon: Cpu,
       number: "03",
-      title: "Systems & Technology",
-      description: "Implementation of booking software, access control systems, and operational automation.",
+      titleKey: "methodology.step3.title",
+      descriptionKey: "methodology.step3.description",
     },
     {
       icon: Users,
       number: "04",
-      title: "Operations & Academy",
-      description: "Staff recruitment and training, sports programs development, and community building.",
+      titleKey: "methodology.step4.title",
+      descriptionKey: "methodology.step4.description",
     },
   ];
 
@@ -34,10 +37,10 @@ const MethodologySection = () => {
         {/* Header */}
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
-            Methodology
+            {t("methodology.title")}
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            A proven four-stage approach that takes projects from concept to thriving operation.
+            {t("methodology.subtitle")}
           </p>
         </div>
 
@@ -56,10 +59,10 @@ const MethodologySection = () => {
 
                 {/* Content */}
                 <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {step.title}
+                  {t(step.titleKey)}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {step.description}
+                  {t(step.descriptionKey)}
                 </p>
               </div>
             ))}
