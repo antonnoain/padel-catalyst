@@ -4,8 +4,8 @@ const FirmSection = () => {
   const pillars = [
     {
       icon: Cpu,
-      title: "Technical Engineering",
-      description: "Optimization of processes, domotics, and energy efficiency for sustainable facilities. We apply industrial engineering standards to maximize operational performance.",
+      title: "Infrastructure Excellence",
+      description: "State-of-the-art facility design and rigorous construction management. We ensure superior architectural quality and durability to create premium player experiences.",
     },
     {
       icon: ChartPie,
@@ -24,14 +24,11 @@ const FirmSection = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="max-w-2xl mb-16">
-          <p className="text-accent text-sm font-medium uppercase tracking-[0.15em] mb-4">
-            The Firm
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
             Why Partner With Us
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            We combine engineering precision with investment expertise to deliver padel facilities that perform—both on and off the court.
+            We integrate premium infrastructure development with strategic investment to deliver world-class padel assets.
           </p>
         </div>
 

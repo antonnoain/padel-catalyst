@@ -42,9 +42,6 @@ const ServicesSection = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-accent text-sm font-medium uppercase tracking-[0.15em] mb-4">
-            Our Services
-          </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-5 leading-tight">
             Who We Help
           </h2>
