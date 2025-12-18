@@ -3,6 +3,8 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+import logoLight from "@/assets/logo-light.png";
+import logoDark from "@/assets/logo-dark.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,14 +34,21 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center">
-          <span
-            className={`text-lg font-semibold tracking-tight transition-colors duration-300 ${
-              isScrolled ? "text-foreground" : "text-white"
+        <a href="#" className="flex items-center relative h-8">
+          <img
+            src={logoLight}
+            alt="Padel Catalyst"
+            className={`h-8 w-auto absolute transition-opacity duration-300 ${
+              isScrolled ? "opacity-0" : "opacity-100"
             }`}
-          >
-            PADEL CATALYST
-          </span>
+          />
+          <img
+            src={logoDark}
+            alt="Padel Catalyst"
+            className={`h-8 w-auto transition-opacity duration-300 ${
+              isScrolled ? "opacity-100" : "opacity-0"
+            }`}
+          />
         </a>
 
         {/* Desktop Navigation */}
