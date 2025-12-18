@@ -56,21 +56,26 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
-        .from('contacts') 
-        .insert([{
+      const { data, error } = await supabase.functions.invoke('submit-contact', {
+        body: {
           name: result.data.name,
           email: result.data.email,
           organization: result.data.organization || null,
           message: result.data.message,
-        }]);
+        }
+      });
 
       if (error) throw error;
+      
+      // Check for rate limit or validation errors from edge function
+      if (data?.error) {
+        toast.error(data.error);
+        return;
+      }
 
       toast.success(t("contact.form.success"));
       setFormData({ name: "", email: "", organization: "", message: "" });
     } catch (error: any) {
-      console.error("Error submitting form:", error.message);
       toast.error("There was an error sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
