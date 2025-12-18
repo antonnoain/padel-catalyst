@@ -11,31 +11,36 @@ const LanguageSwitcher = ({ isScrolled = false }: LanguageSwitcherProps) => {
     <div className="flex items-center gap-2">
       <button
         onClick={() => setLanguage("en")}
-        className={`text-xl transition-all duration-300 hover:scale-110 ${
+        className={`text-sm font-medium transition-all duration-300 ${
           language === "en" 
-            ? "opacity-100 scale-110" 
-            : isScrolled 
-              ? "opacity-50 hover:opacity-80" 
-              : "opacity-60 hover:opacity-90"
+            ? "opacity-100" 
+            : "opacity-50 hover:opacity-80"
+        } ${
+          isScrolled 
+            ? "text-muted-foreground hover:text-accent" 
+            : "text-white/80 hover:text-white"
         }`}
         aria-label="Switch to English"
         title="English"
       >
-        🇬🇧
+        GB
       </button>
+      <span className={`text-sm transition-colors duration-300 ${isScrolled ? "text-muted-foreground" : "text-white/40"}`}>|</span>
       <button
         onClick={() => setLanguage("es")}
-        className={`text-xl transition-all duration-300 hover:scale-110 ${
-          language === "es" 
-            ? "opacity-100 scale-110" 
-            : isScrolled 
-              ? "opacity-50 hover:opacity-80" 
-              : "opacity-60 hover:opacity-90"
+        className={`text-sm font-medium transition-all duration-300 ${
+          language === "en" 
+            ? "opacity-50 hover:opacity-80" 
+            : "opacity-100"
+        } ${
+          isScrolled 
+            ? "text-muted-foreground hover:text-accent" 
+            : "text-white/80 hover:text-white"
         }`}
         aria-label="Cambiar a Español"
         title="Español"
       >
-        🇪🇸
+        ES
       </button>
     </div>
   );
