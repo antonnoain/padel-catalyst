@@ -5,8 +5,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/context/LanguageContext";
-// Import the supabase client
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+// Validation schema matching database constraints
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  organization: z.string().max(200, "Organization must be less than 200 characters").optional().or(z.literal("")),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(5000, "Message must be less than 5000 characters"),
+});
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -17,32 +25,49 @@ const ContactSection = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error for this field when user starts typing
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: "" });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+    
+    // Validate form data
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast.error("Please fix the form errors");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
-      // Use 'contacts' as the table name
       const { error } = await supabase
         .from('contacts') 
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            organization: formData.organization,
-            message: formData.message,
-          },
-        ]);
+        .insert([{
+          name: result.data.name,
+          email: result.data.email,
+          organization: result.data.organization || null,
+          message: result.data.message,
+        }]);
 
       if (error) throw error;
 
       toast.success(t("contact.form.success"));
-      // Clear form on success
       setFormData({ name: "", email: "", organization: "", message: "" });
     } catch (error: any) {
       console.error("Error submitting form:", error.message);
@@ -113,11 +138,13 @@ const ContactSection = () => {
                     name="name"
                     type="text"
                     required
+                    maxLength={100}
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t("contact.form.name.placeholder")}
-                    className="h-11"
+                    className={`h-11 ${errors.name ? "border-destructive" : ""}`}
                   />
+                  {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
@@ -129,11 +156,13 @@ const ContactSection = () => {
                     name="email"
                     type="email"
                     required
+                    maxLength={255}
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t("contact.form.email.placeholder")}
-                    className="h-11"
+                    className={`h-11 ${errors.email ? "border-destructive" : ""}`}
                   />
+                  {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
                 </div>
               </div>
 
@@ -145,11 +174,13 @@ const ContactSection = () => {
                   id="organization"
                   name="organization"
                   type="text"
+                  maxLength={200}
                   value={formData.organization}
                   onChange={handleChange}
                   placeholder={t("contact.form.organization.placeholder")}
-                  className="h-11"
+                  className={`h-11 ${errors.organization ? "border-destructive" : ""}`}
                 />
+                {errors.organization && <p className="text-destructive text-xs mt-1">{errors.organization}</p>}
               </div>
 
               <div>
@@ -160,11 +191,13 @@ const ContactSection = () => {
                   id="message"
                   name="message"
                   required
+                  maxLength={5000}
                   value={formData.message}
                   onChange={handleChange}
                   placeholder={t("contact.form.message.placeholder")}
-                  className="min-h-[120px] resize-none"
+                  className={`min-h-[120px] resize-none ${errors.message ? "border-destructive" : ""}`}
                 />
+                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
               </div>
 
               <Button
