@@ -14,11 +14,9 @@ const LanguageSwitcher = ({ isScrolled = false }: LanguageSwitcherProps) => {
         className={`text-xl transition-all duration-300 hover:scale-110 ${
           language === "en" 
             ? "opacity-100 scale-110" 
-            : "opacity-40 hover:opacity-70"
-        } ${
-          isScrolled 
-            ? "text-muted-foreground hover:text-accent" 
-            : "text-white/80 hover:text-white"
+            : isScrolled 
+              ? "opacity-50 hover:opacity-80" 
+              : "opacity-60 hover:opacity-90"
         }`}
         aria-label="Switch to English"
         title="English"
@@ -30,11 +28,9 @@ const LanguageSwitcher = ({ isScrolled = false }: LanguageSwitcherProps) => {
         className={`text-xl transition-all duration-300 hover:scale-110 ${
           language === "es" 
             ? "opacity-100 scale-110" 
-            : "opacity-40 hover:opacity-70"
-        } ${
-          isScrolled 
-            ? "text-muted-foreground hover:text-accent" 
-            : "text-white/80 hover:text-white"
+            : isScrolled 
+              ? "opacity-50 hover:opacity-80" 
+              : "opacity-60 hover:opacity-90"
         }`}
         aria-label="Cambiar a Español"
         title="Español"
