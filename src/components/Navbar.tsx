@@ -34,18 +34,18 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center relative h-12">
+        <a href="#" className="flex items-center relative h-20">
           <img
             src={logoLight}
             alt="Padel Catalyst"
-            className={`h-12 w-auto absolute transition-opacity duration-300 ${
+            className={`h-20 w-auto absolute transition-opacity duration-300 ${
               isScrolled ? "opacity-0" : "opacity-100"
             }`}
           />
           <img
             src={logoDark}
             alt="Padel Catalyst"
-            className={`h-12 w-auto transition-opacity duration-300 ${
+            className={`h-20 w-auto transition-opacity duration-300 ${
               isScrolled ? "opacity-100" : "opacity-0"
             }`}
           />
